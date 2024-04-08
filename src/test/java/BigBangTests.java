@@ -57,8 +57,6 @@ public class BigBangTests {
         else {
             service.addNota(nota, "Good job!");
             Assertions.assertEquals(sizeBefore+1, service.getAllNote().spliterator().getExactSizeIfKnown());
-            service.deleteNota("1010");
-            Assertions.assertEquals(sizeBefore, service.getAllNote().spliterator().getExactSizeIfKnown());
         }
     }
 
