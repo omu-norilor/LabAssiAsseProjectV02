@@ -98,4 +98,30 @@ public class BigBangTests {
         service.deleteTema("111");
         this.cleanup = true;
     }
+
+    @Test
+    public void testIncrementalIntegration(){
+
+        this.cleanup = false;
+
+        // Phase 1
+        testAddStudent();
+        service.deleteStudent("100");
+
+        // Phase 2
+        testAddAssignment();
+        testAddStudent();
+        service.deleteTema("111");
+        service.deleteStudent("100");
+
+        // Phase 3
+        testAddAssignment();
+        testAddStudent();
+        testAddGrade();
+
+        service.deleteNota("1010");
+        service.deleteStudent("100");
+        service.deleteTema("111");
+        this.cleanup = true;
+    }
 }
